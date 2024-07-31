@@ -1,5 +1,7 @@
 // let url = "https://api.collectapi.com/imdb/imdbSearchByName?query=inception"
 
+let url2 = `https://api.collectapi.com/imdb/imdbSearchById?movieId=tt1375666`
+
 
 if (!localStorage.getItem('history')){
     localStorage.setItem('history', '')
@@ -40,3 +42,23 @@ function getTitles(){
             console.log(`the error: ${err} occurred`)
         })
 }
+
+let titleId = 'tt0994314'
+function getDeets(){
+    fetch(`https://api.collectapi.com/imdb/imdbSearchById?movieId=${titleId}`, {
+        method : 'GET',
+        headers: {
+            'content-type' : 'application/json',
+            'authorization' : 'apikey 4w2SNXofae9kR2qbQ4nztb:5ELeaTekWJ1om9OC2morSD'
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => {
+            console.log(`the error: ${err} occurred`)
+        })
+}
+
+getDeets()
