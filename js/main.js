@@ -2,6 +2,7 @@
 
 let url2 = `https://api.collectapi.com/imdb/imdbSearchById?movieId=tt1375666`
 
+const apiKey = process.env.COLL_API
 
 if (!localStorage.getItem('history')){
     localStorage.setItem('history', '')
@@ -31,7 +32,7 @@ function getTitles(){
         method : 'GET',
         headers: {
             'content-type' : 'application/json',
-            'authorization' : 'apikey 4w2SNXofae9kR2qbQ4nztb:5ELeaTekWJ1om9OC2morSD'
+            'authorization' : apiKey
         }
     })
         .then(res => res.json())
@@ -50,7 +51,7 @@ function getDeets(){
         method : 'GET',
         headers: {
             'content-type' : 'application/json',
-            'authorization' : 'apikey 4w2SNXofae9kR2qbQ4nztb:5ELeaTekWJ1om9OC2morSD'
+            'authorization' : apiKey
         }
     })
         .then(res => res.json())
@@ -61,3 +62,4 @@ function getDeets(){
             console.log(`the error: ${err} occurred`)
         })
 }
+getDeets()
