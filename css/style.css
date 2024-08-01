@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5px;
+    width: 90%;
+    height: auto;
+}
+
+.item{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    height: 40px;
+
+
+}
+
+.movieInfo{
+    display: inline-block;
+    width: 50%;
+    height: 80%;
+}

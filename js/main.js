@@ -37,6 +37,7 @@ function getTitles(){
         .then(res => res.json())
         .then(data => {
             console.log(data.result)
+            // let table = document.createElement()
         })
         .catch(err => {
             console.log(`the error: ${err} occurred`)
@@ -60,5 +61,3 @@ function getDeets(){
             console.log(`the error: ${err} occurred`)
         })
 }
-
-getDeets()
