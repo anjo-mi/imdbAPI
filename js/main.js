@@ -1,8 +1,27 @@
+require('dotenv').config();
+
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Accessing the API key
+const apiKey = process.env.COLL_API;
+console.log(apiKey)
+
+app.get('/', (req, res) => {
+  res.send(`Your API key is: ${apiKey}`);
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+
 // let url = "https://api.collectapi.com/imdb/imdbSearchByName?query=inception"
 
 let url2 = `https://api.collectapi.com/imdb/imdbSearchById?movieId=tt1375666`
 
-const apiKey = process.env.COLL_API
 
 if (!localStorage.getItem('history')){
     localStorage.setItem('history', '')
