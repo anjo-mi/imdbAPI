@@ -1,21 +1,7 @@
-require('dotenv').config();
+import API_KEY from './index.js';
+console.log(API_KEY)
 
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
-
-// Accessing the API key
-const apiKey = process.env.COLL_API;
-console.log(apiKey)
-
-app.get('/', (req, res) => {
-  res.send(`Your API key is: ${apiKey}`);
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
-
+let apiKey = API_KEY
 
 
 // let url = "https://api.collectapi.com/imdb/imdbSearchByName?query=inception"
