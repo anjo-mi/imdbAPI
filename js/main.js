@@ -14,7 +14,7 @@ if (!localStorage.getItem('history')){
 }
 
 
-let search = ''
+// let search = ''
 
 document.querySelector('button').addEventListener('click', () => {
     search = document.getElementById('title').value.toLowerCase()
