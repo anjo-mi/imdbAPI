@@ -7,6 +7,9 @@ html{
     font-size: 62.5%;
 }
 
+/* #results{
+    display: none;
+} */
 section{
     display: flex;
     flex-wrap: wrap;
@@ -30,4 +33,9 @@ section{
     display: inline-block;
     width: 50%;
     height: 80%;
+}
+
+.rightSide{
+    height: 40px;
+    width: 10%;
 }

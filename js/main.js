@@ -1,5 +1,5 @@
 import API_KEY from './index.js';
-console.log(API_KEY)
+
 
 let apiKey = API_KEY
 
@@ -43,7 +43,27 @@ function getTitles(){
         .then(res => res.json())
         .then(data => {
             console.log(data.result)
-            // let table = document.createElement()
+            console.log(data.result.length)
+            let results = document.querySelectorAll('.item')
+            results = Array.from(results)
+            results.forEach((el, i) => {
+                if (i < data.result.length){
+                    let img = el.querySelector('img')
+                    let title = el.querySelector('h2.title')
+                    let type = el.querySelector('span.type')
+                    let year = el.querySelector('span.year')
+
+                    if(data.result[i]['Poster'] === 'N/A'){
+                        img.src = 'img/arrDev.jpg'
+                    }else{
+                        img.src = data.result[i]['Poster']
+                    }
+                    title.textContent = data.result[i]['title']
+                    type.textContent = data.result[i]['type']
+                    year.textContent = data.result[i]['Year']
+                    
+                }
+            })
         })
         .catch(err => {
             console.log(`the error: ${err} occurred`)
@@ -67,4 +87,3 @@ function getDeets(){
             console.log(`the error: ${err} occurred`)
         })
 }
-getDeets()
