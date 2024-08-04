@@ -60,7 +60,7 @@ function getTitles(){
                         img.src = data.result[i]['Poster']
                     }
                     title.textContent = data.result[i]['Title']
-                    type.textContent = data.result[i]['Type']
+                    type.textContent = data.result[i]['Type'].slice(0,1).toUpperCase() + data.result[i]['Type'].slice(1)
                     year.textContent = data.result[i]['Year']
                     
                 }
