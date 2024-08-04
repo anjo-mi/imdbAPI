@@ -48,10 +48,18 @@ img{
     height: 20px;
     margin: 0 auto;
     text-align: center;
+    overflow: hidden;
 
 }
-.type, .year{
+.type{
     width: 40px;
+    height: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.year{
+    width: 80px;
     height: 10px;
     margin: 0;
     text-align: center;
