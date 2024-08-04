@@ -48,6 +48,7 @@ function getTitles(){
             let results = document.querySelectorAll('.item')
             results = Array.from(results)
             results.forEach((el, i) => {
+                el.classList.add('hidden')
                 if (i < data.result.length){
                     let img = el.querySelector('img')
                     let title = el.querySelector('h2.title')
