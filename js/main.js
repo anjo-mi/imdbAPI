@@ -2,7 +2,7 @@ import API_KEY from './index.js';
 
 
 let apiKey = API_KEY
-console.log(apiKey)
+
 
 
 // let url = "https://api.collectapi.com/imdb/imdbSearchByName?query=inception"
@@ -59,8 +59,8 @@ function getTitles(){
                     }else{
                         img.src = data.result[i]['Poster']
                     }
-                    title.textContent = data.result[i]['title']
-                    type.textContent = data.result[i]['type']
+                    title.textContent = data.result[i]['Title']
+                    type.textContent = data.result[i]['Type']
                     year.textContent = data.result[i]['Year']
                     
                 }
