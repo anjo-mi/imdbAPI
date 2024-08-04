@@ -2,6 +2,7 @@ import API_KEY from './index.js';
 
 
 let apiKey = API_KEY
+console.log(apiKey)
 
 
 // let url = "https://api.collectapi.com/imdb/imdbSearchByName?query=inception"
