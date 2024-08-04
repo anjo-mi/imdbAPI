@@ -64,9 +64,10 @@ function getTitles(){
                     type.textContent = data.result[i]['Type'].slice(0,1).toUpperCase() + data.result[i]['Type'].slice(1)
                     year.textContent = data.result[i]['Year']
                     el.classList.toggle('hidden')
-                    titleId = data.result[i]['imdbID']
-                    el.addEventListener('click', getDeets)
-                    
+                    el.addEventListener('click', (event) => {
+                        titleId = data.result[i]['imdbID']
+                        getDeets()
+                    })
                 }
             })
         })
@@ -75,7 +76,7 @@ function getTitles(){
         })
 }
 
-let titleId = 'tt0994314'
+let titleId = ''
 function getDeets(){
     fetch(`https://api.collectapi.com/imdb/imdbSearchById?movieId=${titleId}`, {
         method : 'GET',
