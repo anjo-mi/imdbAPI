@@ -34,6 +34,7 @@ document.querySelector('button').addEventListener('click', () => {
 
 
 function getTitles(){
+    document.getElementById('results').classList.remove('hidden')
     fetch(`https://api.collectapi.com/imdb/imdbSearchByName?query=${search}`, {
         method : 'GET',
         headers: {
@@ -80,6 +81,7 @@ function getTitles(){
 
 let titleId = ''
 function getDeets(){
+    document.getElementById('results').classList.add('hidden')
     fetch(`https://api.collectapi.com/imdb/imdbSearchById?movieId=${titleId}`, {
         method : 'GET',
         headers: {
@@ -89,7 +91,11 @@ function getDeets(){
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            console.log(data.result)
+            let clicked = data.result
+            let body = document.getElementsByTagName('body')
+            body.style.backgroundImage = `url(${data.result['Poster']})`
+
         })
         .catch(err => {
             console.log(`the error: ${err} occurred`)
