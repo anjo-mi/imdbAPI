@@ -66,6 +66,8 @@ function getTitles(){
                     el.classList.toggle('hidden')
                     el.addEventListener('click', (event) => {
                         titleId = data.result[i]['imdbID']
+
+                        event.preventDefault()
                         getDeets()
                     })
                 }
