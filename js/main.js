@@ -62,6 +62,7 @@ function getTitles(){
                     title.textContent = data.result[i]['Title']
                     type.textContent = data.result[i]['Type'].slice(0,1).toUpperCase() + data.result[i]['Type'].slice(1)
                     year.textContent = data.result[i]['Year']
+                    el.classList.toggle('hidden')
                     
                 }
             })

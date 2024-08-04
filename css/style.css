@@ -30,6 +30,10 @@ section{
 
 }
 
+.hidden{
+    display: none;
+}
+
 .movieInfo{
     display: flex;
     width: 50%;
