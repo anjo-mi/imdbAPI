@@ -7,9 +7,6 @@ html{
     font-size: 62.5%;
 }
 
-/* #results{
-    display: none;
-} */
 body{
     border: 3px solid black;
 }
@@ -30,8 +27,8 @@ section{
     justify-content: space-around;
     height: 40px;
     padding-top: 0;
-
-
+    
+    
 }
 
 .hidden{
@@ -57,7 +54,7 @@ img{
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
-
+    
 }
 .type{
     width: 40px;

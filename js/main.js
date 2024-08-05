@@ -34,6 +34,7 @@ document.querySelector('button').addEventListener('click', () => {
 
 
 function getTitles(){
+    document.getElementById('details').classList.add('hidden')
     document.getElementById('results').classList.remove('hidden')
     fetch(`https://api.collectapi.com/imdb/imdbSearchByName?query=${search}`, {
         method : 'GET',
@@ -82,6 +83,7 @@ function getTitles(){
 let titleId = ''
 function getDeets(){
     document.getElementById('results').classList.add('hidden')
+    document.getElementById('details').classList.remove('hidden')
     fetch(`https://api.collectapi.com/imdb/imdbSearchById?movieId=${titleId}`, {
         method : 'GET',
         headers: {
@@ -109,7 +111,20 @@ function getDeets(){
                 details.querySelector('.seasons').textContent = `${clicked['totalSeasons']} Seasons`
                 details.querySelector('.actors').textContent = clicked['Actors']
                 details.querySelector('.plot').textContent = clicked['Plot']
-
+            }
+            if (clicked['Type'] === 'movie'){
+                details.querySelector('.title').textContent = clicked['Title']
+                if (clicked['Award'] !== 'N/A'){
+                    details.querySelector('.awards').classList.toggle('hidden')
+                    details.querySelector('.awards').textContent = clicked['Awards']
+                }
+                details.querySelector('.rating').textContent = `${clicked['imdbRating']}/10 from ${clicked['imdbVotes']} votes`
+                details.querySelector('.rated').textContent = clicked['Rated']
+                details.querySelector('.genre').textContent = clicked['Genre']
+                details.querySelector('.runtime').textContent = clicked['Runtime']
+                details.querySelector('.seasons').textContent = `${clicked['Year']}`
+                details.querySelector('.actors').textContent = clicked['Actors']
+                details.querySelector('.plot').textContent = clicked['Plot']
             }
 
         })
