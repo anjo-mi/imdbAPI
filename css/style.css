@@ -10,6 +10,10 @@ html{
 /* #results{
     display: none;
 } */
+body{
+    border: 3px solid black;
+}
+
 section{
     display: flex;
     flex-wrap: wrap;
@@ -67,4 +71,9 @@ img{
     height: 10px;
     margin: 0;
     text-align: center;
+}
+
+#details{
+    background: yellow;
+    font: 1.6rem navy;
 }

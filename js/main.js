@@ -94,7 +94,23 @@ function getDeets(){
             console.log(data.result)
             let clicked = data.result
             let body = document.body
-            body.style.backgroundImage = `url(${data.result['Poster']})`
+            body.style.backgroundImage = `url(${clicked['Poster']})`
+            let details = document.getElementById('details')
+            if (clicked['Type'] === 'series'){
+                details.querySelector('.title').textContent = clicked['Title']
+                if (clicked['Award'] !== 'N/A'){
+                    details.querySelector('.awards').classList.toggle('hidden')
+                    details.querySelector('.awards').textContent = clicked['Awards']
+                }
+                details.querySelector('.rating').textContent = `${clicked['imdbRating']}/10 from ${clicked['imdbVotes']} votes`
+                details.querySelector('.rated').textContent = clicked['Rated']
+                details.querySelector('.genre').textContent = clicked['Genre']
+                details.querySelector('.runtime').textContent = clicked['Runtime']
+                details.querySelector('.seasons').textContent = `${clicked['totalSeasons']} Seasons`
+                details.querySelector('.actors').textContent = clicked['Actors']
+                details.querySelector('.plot').textContent = clicked['Plot']
+
+            }
 
         })
         .catch(err => {
