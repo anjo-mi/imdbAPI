@@ -13,18 +13,22 @@ let url2 = `https://api.collectapi.com/imdb/imdbSearchById?movieId=tt1375666`
 if (!localStorage.getItem('history')){
     localStorage.setItem('history', '')
 }
+let results = Array.from(document.querySelectorAll('.item'))
 
-function secondFetch(event){
-    titleId = data.result[i]['imdbID']
-    event.preventDefault()
-    getDeets()
-    let results = document.querySelectorAll('.item')
-    results = Array.from(results)
-    results.forEach(el => {
-        el.removeEventListener('click', secondFetch)
-    })
+const handlers = []
+
+
+function createHandler(data, i){
+    return function secondFetch(event){
+        event.preventDefault()
+        titleId = data.result[i]['imdbID']
+        getDeets()
+
+        results.forEach((el,i) => {
+            el.removeEventListener('click', handlers[i])
+        })
+    }
 }
-
 
 let search = ''
 
@@ -75,9 +79,24 @@ function getTitles(){
                     }
                     title.textContent = data.result[i]['Title']
                     type.textContent = data.result[i]['Type'].slice(0,1).toUpperCase() + data.result[i]['Type'].slice(1)
+                    
                     year.textContent = data.result[i]['Year']
                     el.classList.toggle('hidden')
-                    el.addEventListener('click', secondFetch)
+
+
+                    const handler = createHandler(data, i)
+                    handlers.push(handler)
+
+                    el.addEventListener('click', handler)
+                    // el.addEventListener('click', (event) => {
+                    //     event.preventDefault()
+                    //     titleId = data.result[i]['imdbID']
+                    //     let results = document.querySelectorAll('.item')
+                    //     getDeets()
+                    //     results.forEach(el => {
+                    //         el.removeEventListener('click', )
+                    //     })
+                    // })
                 }
             })
         })
