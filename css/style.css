@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 html{
@@ -27,6 +27,8 @@ section{
     justify-content: space-around;
     height: 40px;
     padding-top: 0;
+    border: 2px dotted skyblue;
+    background: white;
     
     
 }
@@ -37,7 +39,7 @@ section{
 
 .movieInfo{
     display: flex;
-    width: 50%;
+    width: 80%;
     height: 100%;
     padding-top: 0;
     padding-bottom: 0;
@@ -73,4 +75,34 @@ img{
 #details{
     background: yellow;
     font: 1.6rem navy;
+}
+
+h1.title{
+    height: fit-content;
+}
+
+.awards{
+    width: 100%;
+    text-align: center;
+}
+
+.rating, .rated{
+    align-content: center;
+}
+
+#details:nth-child(2){
+    justify-content: space-evenly;
+}
+
+label{
+    width: 100%;
+    text-align: center;
+    display: block !important;
+    text-decoration-line: underline;
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+p.plot, p.actors{
+    display: block;
 }

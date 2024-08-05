@@ -14,6 +14,17 @@ if (!localStorage.getItem('history')){
     localStorage.setItem('history', '')
 }
 
+function secondFetch(event){
+    titleId = data.result[i]['imdbID']
+    event.preventDefault()
+    getDeets()
+    let results = document.querySelectorAll('.item')
+    results = Array.from(results)
+    results.forEach(el => {
+        el.removeEventListener('click', secondFetch)
+    })
+}
+
 
 let search = ''
 
@@ -66,12 +77,7 @@ function getTitles(){
                     type.textContent = data.result[i]['Type'].slice(0,1).toUpperCase() + data.result[i]['Type'].slice(1)
                     year.textContent = data.result[i]['Year']
                     el.classList.toggle('hidden')
-                    el.addEventListener('click', (event) => {
-                        titleId = data.result[i]['imdbID']
-
-                        event.preventDefault()
-                        getDeets()
-                    })
+                    el.addEventListener('click', secondFetch)
                 }
             })
         })
@@ -96,7 +102,11 @@ function getDeets(){
             console.log(data.result)
             let clicked = data.result
             let body = document.body
-            body.style.backgroundImage = `url(${clicked['Poster']})`
+            if(clicked['Poster'] === 'N/A'){
+                body.style.backgroundImage = 'img/arrDev.jpg'
+            }else{
+                body.style.backgroundImage = `url(${clicked['Poster']})`
+            }
             let details = document.getElementById('details')
             if (clicked['Type'] === 'series'){
                 details.querySelector('.title').textContent = clicked['Title']
