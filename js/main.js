@@ -15,7 +15,9 @@ if (!localStorage.getItem('history')){
 }
 let results = Array.from(document.querySelectorAll('.item'))
 
-const handlers = []
+let handlers = []
+
+let running = false
 
 
 function createHandler(data, i){
@@ -27,6 +29,7 @@ function createHandler(data, i){
         results.forEach((el,i) => {
             el.removeEventListener('click', handlers[i])
         })
+        handlers = []
     }
 }
 
@@ -60,6 +63,7 @@ function getTitles(){
     })
         .then(res => res.json())
         .then(data => {
+            handlers = []
             console.log(data.result)
             console.log(data.result.length)
             let results = document.querySelectorAll('.item')
@@ -88,15 +92,6 @@ function getTitles(){
                     handlers.push(handler)
 
                     el.addEventListener('click', handler)
-                    // el.addEventListener('click', (event) => {
-                    //     event.preventDefault()
-                    //     titleId = data.result[i]['imdbID']
-                    //     let results = document.querySelectorAll('.item')
-                    //     getDeets()
-                    //     results.forEach(el => {
-                    //         el.removeEventListener('click', )
-                    //     })
-                    // })
                 }
             })
         })
@@ -107,6 +102,8 @@ function getTitles(){
 
 let titleId = ''
 function getDeets(){
+    if (running) return
+    running = true
     document.getElementById('results').classList.add('hidden')
     document.getElementById('details').classList.remove('hidden')
     fetch(`https://api.collectapi.com/imdb/imdbSearchById?movieId=${titleId}`, {
@@ -159,5 +156,8 @@ function getDeets(){
         })
         .catch(err => {
             console.log(`the error: ${err} occurred`)
+        })
+        .finally(() => {
+            running = false
         })
 }
